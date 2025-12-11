@@ -72,3 +72,10 @@ This stage creates smart paradigms based on tree algorithm. You can also use fol
 ```Bash
 ./rgl-learner documentation <lang-code>
 ```
+
+## Converting to JSON files
+
+After these two modules, the following source files will be produced and can be manually corrected: `Cat<lang-code>.gf`, `Res<lang-code>.gf`, `Morpho<langcode>.gf` and `Dict<lang-code>.gf` . If changes are made, you would need to instruct the compiler to export the code to JSON:
+```Bash
+    gf --make -output-format=source_json Dict<lang-code>.gf
+```
