@@ -335,7 +335,7 @@ def read_json_paradigms(lang, langcode, source, dir="data"):
             data[pos] = (pos, {record: lexemes})
     return data
 
-def read_data(lang, dir="data"):
+def read_data(lang, dir="output"):
     with open(f"{dir}/{lang}/paradigms.pickle", "rb") as f:
         return pickle.load(f)
 

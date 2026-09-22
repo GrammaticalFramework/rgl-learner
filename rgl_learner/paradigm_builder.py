@@ -902,7 +902,8 @@ def guess_by_lemma(
     iters=4,
     shuffle=True,
     input_json=False,
-    init_json=False
+    init_json=False, 
+    dirname="output"
 ):
     print("Reading data..")
     print(f"Parameters\nNumber of examples: {t}\nSplit: {split}\nIterations: {iters}\nShuffle: {shuffle}")
@@ -991,7 +992,7 @@ def guess_by_lemma(
    # overload_code+=boilerplate.get("Voc","")
    # overload_code+=boilerplate.get("Prep","")
 
-    with open(f"data/{lang}/Paradigms{langcode}.gf", "w") as f:
+    with open(f"{dirname}/{lang}/Paradigms{langcode}.gf", "w") as f:
         f.write(
             f"resource Paradigms{langcode} = Morpho{langcode}  ** open Predef, Prelude, Cat{langcode}, Res{langcode} in {{\noper\n"
         )
@@ -1003,7 +1004,7 @@ def guess_by_lemma(
     #    f.write(f"concrete Lexicon{langcode} of Lexicon = Cat{langcode} ** open Paradigms{langcode} in {{\n")
     #    f.write("}")
 
-    with open(f"data/{lang}/Lang{langcode}.gf", "w") as f:
+    with open(f"{dirname}/{lang}/Lang{langcode}.gf", "w") as f:
         f.write("--# -path=.:../abstract\n")
         f.write(f"concrete Lang{langcode} of Lang =\n")
         f.write(f"  Lexicon{langcode}\n")
@@ -1013,26 +1014,26 @@ def guess_by_lemma(
         f.write("\n")
         f.write("}")
 
-    with open(f"data/{lang}/All{langcode}Abs.gf", "w") as f:
+    with open(f"{dirname}/{lang}/All{langcode}Abs.gf", "w") as f:
         f.write(f"abstract All{langcode}Abs =\n")
         f.write(f"  Lang\n")
         f.write("  ** {}")
 
-    with open(f"data/{lang}/All{langcode}.gf", "w") as f:
+    with open(f"{dirname}/{lang}/All{langcode}.gf", "w") as f:
         f.write(f"concrete All{langcode} of All{langcode}Abs =\n")
         f.write(f"  Lang{langcode}\n")
         f.write("  **\n")
         f.write("    {} ;\n")
 
     unimorph_code = format_unimorph(tokens)
-    with open(f"data/{lang}/unimorph_{langcode}.tsv", "w") as f:
+    with open(f"{dirname}/{lang}/unimorph_{langcode}.tsv", "w") as f:
         f.write(unimorph_code)
 
 
-    with open(f"data/{lang}/rules.pickle", "wb") as f:
+    with open(f"{dirname}/{lang}/rules.pickle", "wb") as f:
         pickle.dump((how,all_rules),f)
 
-    with open(f"data/{lang}/errors.txt", "w") as f:
+    with open(f"{dirname}/{lang}/errors.txt", "w") as f:
         f.write(analysis)
 
     return score

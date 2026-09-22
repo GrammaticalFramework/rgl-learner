@@ -11,6 +11,7 @@ import json
 
 from rgl_learner.gf_types import *
 
+
 def getTypeOf(source_plugin, lang_plugin, o):
     if type(o) is str:
         return GFStr(),[o]
@@ -111,7 +112,7 @@ def collect_derivations(pos,word,table,derivations):
             adj_noun_pairs.add((noun,word))
 
 def learn(source, lang, filename=None,
-          dirname="data", level=None,
+          dirname="output", level=None,
           compress_table=True,
           complete=True):
     source_plugin = plugins[source]
@@ -273,7 +274,7 @@ def learn(source, lang, filename=None,
 
     def compress(ddict):
         default = default_params.values()
-        while len(ddict) == 1 and (next(iter(ddict)).startswith("no") or next(iter(ddict)) in default):
+        while len(ddict) == 1:
             val = next(iter(ddict.values()))
             if isinstance(val, dict):
                 ddict = next(iter(ddict.values()))
@@ -310,7 +311,7 @@ def learn(source, lang, filename=None,
         for (word, table, gtags) in ts:
             
             add_form(table, default_table[pos])
-            if compress_table and (len(table) > 1 or isinstance(next(iter(table)), dict)):
+            if compress_table and (len(table) > 1 or isinstance(next(iter(table.values())), dict)):
                 table = compress(table)
 
             #collect_derivations(pos,word,table,derivations)
@@ -322,7 +323,11 @@ def learn(source, lang, filename=None,
                 table = res
             
             table = sort_table(table)
-           # table["lemma"] = word
+            if pos in  lang_plugin.add_lemma:
+                if "s" in table:
+                    table["s"]["lemma"] = word
+                else: 
+                    table["lemma"] = word
                 
 
             if pos in ["N","PN"]:
@@ -395,6 +400,8 @@ def learn(source, lang, filename=None,
 
     lang_code = lang_plugin.iso3
     path = f"{dirname}/{lang}/"
+    if not os.path.exists(path):
+        os.makedirs(path)
     with open(path +'Res' + lang_code + '.gf', 'w') as fr, \
             open(path + 'Cat' + lang_code + '.gf', 'w') as fc, \
             open(path + 'Dict' + lang_code + '.gf', 'w') as fd, \

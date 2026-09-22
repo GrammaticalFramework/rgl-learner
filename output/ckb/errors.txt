@@ -1,0 +1,118 @@
+==V==
+== Class 32 == 
+Number of examples: 1
+Accuracy per class: 0.0
+Confused with: 
+Class 21 1 times: 0.001314060446780552% of overlap
+
+== Class 22 == 
+Number of examples: 2
+Accuracy per class: 1.0
+Confused with: 
+
+==N==
+== Class 12 == 
+Number of examples: 3
+Accuracy per class: 0.0
+Confused with: 
+Class 7 3 times: 0.10526315789473684% of overlap
+
+== Class 13 == 
+Number of examples: 8
+Accuracy per class: 0.25
+Confused with: 
+Class 7 3 times: 0.07894736842105263% of overlap
+Class 8 2 times: 0.21052631578947367% of overlap
+Class 9 1 times: 0.18421052631578946% of overlap
+
+== Class 18 == 
+Number of examples: 3
+Accuracy per class: 0.3333333333333333
+Confused with: 
+Class 9 2 times: 0.07894736842105263% of overlap
+
+== Class 4 == 
+Number of examples: 23
+Accuracy per class: 0.6521739130434783
+Confused with: 
+Class 9 6 times: 0.15789473684210525% of overlap
+Class 7 2 times: 0.3684210526315789% of overlap
+
+== Class 11 == 
+Number of examples: 5
+Accuracy per class: 0.8
+Confused with: 
+Class 7 1 times: 0.07894736842105263% of overlap
+
+== Class 8 == 
+Number of examples: 115
+Accuracy per class: 0.9304347826086956
+Confused with: 
+Class 9 4 times: 0.05263157894736842% of overlap
+Class 8 4 times: 0.07894736842105263% of overlap
+
+== Class 10 == 
+Number of examples: 85
+Accuracy per class: 0.9882352941176471
+Confused with: 
+Class 7 1 times: 0.05263157894736842% of overlap
+
+== Class 1 == 
+Number of examples: 2
+Accuracy per class: 1.0
+Confused with: 
+
+== Class 2 == 
+Number of examples: 5
+Accuracy per class: 1.0
+Confused with: 
+
+== Class 7 == 
+Number of examples: 2
+Accuracy per class: 1.0
+Confused with: 
+
+== Class 9 == 
+Number of examples: 54
+Accuracy per class: 1.0
+Confused with: 
+
+== Class 14 == 
+Number of examples: 3
+Accuracy per class: 1.0
+Confused with: 
+
+==A==
+== Class 6 == 
+Number of examples: 2
+Accuracy per class: 0.0
+Confused with: 
+Class 3 2 times: 0.030927835051546393% of overlap
+
+== Class 3 == 
+Number of examples: 4
+Accuracy per class: 0.25
+Confused with: 
+Class 3 3 times: 0.041237113402061855% of overlap
+
+== Class 5 == 
+Number of examples: 14
+Accuracy per class: 0.7142857142857143
+Confused with: 
+Class 3 4 times: 0.020618556701030927% of overlap
+
+== Class 1 == 
+Number of examples: 3
+Accuracy per class: 1.0
+Confused with: 
+
+== Class 4 == 
+Number of examples: 81
+Accuracy per class: 1.0
+Confused with: 
+
+== Class 7 == 
+Number of examples: 2
+Accuracy per class: 1.0
+Confused with: 
+

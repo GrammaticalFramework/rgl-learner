@@ -5,7 +5,7 @@ import rgl_learner.plugins as plugins
 import pickle
 from tqdm.auto import tqdm
 
-ignore_tags = ["LGSPEC1", "LGSPEC2"]
+#ignore_tags = ["LGSPEC1", "LGSPEC2"]
 
 tag2cat = {
     "ADJ": "A",
@@ -283,7 +283,9 @@ def filter_tags(tags):
         if not tag:
             continue
         if "(" in tag:
-            if tag.startswith("PSS"):
+            if tag.startswith("LGSPEC"):
+                new_tags.append(tag)
+            elif tag.startswith("PSS"):
                 tag = tag.replace("(", "").replace(")", "").replace(",", "")
                 new_tags.append(tag.strip())
             else:

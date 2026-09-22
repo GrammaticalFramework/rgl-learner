@@ -8,6 +8,7 @@ class PluginWrapper:
     def __init__(self,module):
         self.module = module
         self.iso3 = module.get("iso3",module["__name__"])
+        self.add_lemma = module.get("add_lemma", [])
         self.params = module.get("params", {})
         self.order = module.get("order", {})
         self.params_order = module.get("params_order", {})

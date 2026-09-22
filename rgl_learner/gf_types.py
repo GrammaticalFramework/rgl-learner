@@ -1,6 +1,19 @@
 from dataclasses import dataclass
 import itertools
 
+# GF reserved words cannot be used as record labels; suffix them with "_".
+GF_RESERVED = {
+    "abstract", "case", "cat", "concrete", "data", "def", "flags", "fun", "in",
+    "incomplete", "instance", "interface", "let", "lin", "lincat", "lindef",
+    "linref", "of", "open", "oper", "param", "pre", "printname", "resource",
+    "strs", "table", "variants", "where", "with",
+}
+
+def camel_case(x):
+    y = x[0].lower() + x[1:] if len(x) > 1 else x.lower()
+    return y + "_" if y in GF_RESERVED else y
+
+
 class GFType:
     def printParamDefs(self,f,pdefs):
         pass
@@ -145,14 +158,14 @@ class GFRecord(GFType):
             lbl = "".join([(c if c != '-' else '_') for c in str(lbl)])
             if s:
                 s = s + "; "
-            s = s + lbl+": "+ty.__repr__()
+            s = s + camel_case(lbl) +": "+ty.__repr__()
         return "{"+s+"}"
 
     def renderOper(self,indent,vars):
         s  = '{ '
         ind = 0
         for num, (lbl,ty) in enumerate(self.fields):
-            lbl = "".join([(c if c != '-' else '_') for c in str(lbl)])
+            lbl = camel_case("".join([(c if c != '-' else '_') for c in str(lbl)]))
             if ind > 0:
                 s += ' ;\n'
             form = ty.renderOper(indent+len(lbl)+5,vars)
@@ -180,5 +193,5 @@ class GFRecord(GFType):
         labels = {}
         for lbl, ty in self.fields:
             lbl = "".join([(c if c != '-' else '_') for c in str(lbl)])
-            labels[lbl] = ty.linearize()
+            labels[camel_case(lbl)] = ty.linearize()
         return labels
